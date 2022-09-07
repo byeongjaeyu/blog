@@ -6,15 +6,34 @@
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
+    "noEmit": false,
+    "emitDeclarationOnly": false,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "isolatedModules": true,
+    "incremental": true,
+    "declaration": true,
+    "outDir": "./lib",
+    "baseUrl": "src",
+    "paths": {
+      "@pages/*": [
+        "./pages/*"
+      ],
+      "@components/*": [
+        "./components/*"
+      ],
+      "@defines/*": [
+        "./defines/*"
+      ],
+    },
+    "plugins": [
+      { "transform": "typescript-transform-paths", "afterDeclarations": true }
+    ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"],
   "exclude": ["node_modules"]
 }
+
