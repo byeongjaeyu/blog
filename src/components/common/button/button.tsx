@@ -38,6 +38,10 @@ export function Button(props: ButtonProps) {
             </div>
             <style jsx>
                 {`
+                    .button-container.disabled {
+                        cursor: not-allowed;
+                    }
+
                     button {
                         width: ${width};
                         height: ${height};
@@ -48,6 +52,8 @@ export function Button(props: ButtonProps) {
                         align-items: center;
                         transition: 0.1s;
                     }
+                    
+                    
                 `}
             </style>
         </>
