@@ -53,7 +53,16 @@ export function Button(props: ButtonProps) {
                         transition: 0.1s;
                     }
                     
-                    
+                    .contained.primary {
+                        background-color: ${EColor.PRIMARY_LIGHT};
+                        color: ${EColor.PRIMARY_LIGHT};
+                    }
+                    button:hover.contained.primary {
+                        background-color: ${EColor.PRIMARY_DARK};
+                    }
+                    button:active.contained.primary {
+                        background-color: ${EColor.PRIMARY_MAIN};
+                    }    
                 `}
             </style>
         </>
