@@ -2,7 +2,7 @@ import React, { ButtonHTMLAttributes } from 'react';
 import classNames from 'classnames';
 import { EColor, Size } from '@defines/css';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     width? : Size;
     height? : Size;
     fontSize? : Size;
@@ -36,6 +36,7 @@ export function Button(props: ButtonProps) {
                     </div>
                 </button>
             </div>
+            {/* 양식 작업하자! */}
             <style jsx>
                 {`
                     .button-container.disabled {
