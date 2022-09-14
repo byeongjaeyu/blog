@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react'
+import { Footer } from './components/footer/footer';
 import { Header } from './components/header/header';
 
 interface Layoutprops {
@@ -12,7 +13,7 @@ export function Layout(props: Layoutprops) {
             <Header/>
             <div>옆구리</div>
             {children}
-            <div>발</div>
+            <Footer/>
         </>
     )
 }

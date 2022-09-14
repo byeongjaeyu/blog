@@ -10,9 +10,7 @@ const Home: NextPage = () => {
     router.push('/main')
   },[])
   return (
-    <>
-      
-    </>
+    <></>
   )
 }
 

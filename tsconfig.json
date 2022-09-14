@@ -17,17 +17,20 @@
     "incremental": true,
     "declaration": true,
     "outDir": "./lib",
-    "baseUrl": "src",
+    "baseUrl": "",
     "paths": {
       "@pages/*": [
-        "./pages/*"
+        "./src/pages/*"
       ],
       "@components/*": [
-        "./components/*"
+        "./src/components/*"
       ],
       "@defines/*": [
-        "./defines/*"
+        "./src/defines/*"
       ],
+      "@styles/*": [
+        "./styles/*"
+      ]
     },
     "plugins": [
       { "transform": "typescript-transform-paths", "afterDeclarations": true }

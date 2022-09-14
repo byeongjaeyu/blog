@@ -1,3 +1,4 @@
+import '../../styles/reset.css'
 import { Layout } from '@components/common/layout/layout'
 import type { AppProps } from 'next/app'
 
