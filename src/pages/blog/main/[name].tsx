@@ -1,9 +1,13 @@
 import React from "react";
-import { useRouter } from "next/router";
 import { GetServerSideProps } from "next";
 import { PreviewTable } from "@components/common/article/preview";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { EColor } from "@defines/css";
+import { useRouter } from "next/router";
 
 export interface BlogMainProps {
+    name: string,
     articles: {
         title: string,
         description: string,
@@ -13,12 +17,21 @@ export interface BlogMainProps {
 }
 
 export default function BlogMain(props: BlogMainProps) {
+    const router = useRouter();
     const { 
+        name,
         articles,
     } = props
     return (
         <>
             <PreviewTable articles={articles}/>
+            <FontAwesomeIcon
+                    icon={faPlus}
+                    style={{ fontSize:100, color:EColor.BLACK }}
+                    onClick={() => {
+                        router.push(`/blog/write/${name}`);
+                    }}
+            />
         </>
     )
 };
@@ -47,5 +60,5 @@ export const getServerSideProps: GetServerSideProps = async(context) => {
             uploadDate: '어제',
         },
     ]
-    return { props: {articles} }
+    return { props: {name, articles} }
 }

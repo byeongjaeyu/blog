@@ -2,11 +2,12 @@ import { EColor } from "@defines/css";
 import { BlogMainProps } from "@pages/blog/main/[name]"
 import classNames from "classnames";
 
-export function PreviewTable(props: BlogMainProps) {
+type PrecviewTableProps = Omit<BlogMainProps, "name">
+
+export function PreviewTable(props: PrecviewTableProps) {
     const {
         articles
     } = props;
-    console.log(articles);
     return (
         <>
             <div className={classNames('preview-table-wrapper')}>
