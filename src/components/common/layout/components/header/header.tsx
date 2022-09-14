@@ -4,17 +4,14 @@ import classNames from 'classnames';
 import { EColor } from '@defines/css';
 
 interface HeaderProps {
-    menuList?: {
-        name: string,
-        src: string
-    },
+    menuList?: string[],
     profileImg?: string,
     name?: string,
 }
 
 export function Header(props: HeaderProps) {
     const {
-        menuList,
+        menuList = ['bj'],
         profileImg,
         name,
     } = props
@@ -22,15 +19,13 @@ export function Header(props: HeaderProps) {
         <>
             <div className={classNames('header-wrapper')}>
                 <img className={classNames('logo')}/>
-                {/* { menuList?.map(() => {
-                    console.log(name, src)
+                { menuList?.map((menu) => {
                     return (
-                        <></>
-                        // <Link href={src}>
-                        //     <a>{name}</a>
-                        // </Link>
+                        <Link href={`/blog/main/${menu}`} key={menu}>
+                            <a>{menu}</a>
+                        </Link>
                     )
-                }) } */}
+                }) }
                 <img className={classNames(!profileImg && 'unknown')} src={profileImg ? profileImg : 'https://tse3.mm.bing.net/th/id/OIP.Ld3gVPutRBt6AAJlquDWAgHaIW?pid=ImgDet&rs=1'}/>
                 <p>{name ? name : 'unknown'}반갑다</p>
             </div>
@@ -50,7 +45,7 @@ export function Header(props: HeaderProps) {
                     }
 
                     p {
-                        
+
                     }
                 `}
             </style>
