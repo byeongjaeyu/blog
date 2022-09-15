@@ -1,6 +1,6 @@
 import React from "react";
 import { GetServerSideProps } from "next";
-import { PreviewTable } from "@components/common/article/preview";
+import { PreviewTable } from "@components/blog/article/preview";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { EColor } from "@defines/css";

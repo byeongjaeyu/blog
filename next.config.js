@@ -14,9 +14,6 @@ const nextConfig = {
   async rewrites() {
     return []
   },
-  experimental: {
-    urlImports: ['']
-  }
 }
 
 module.exports = nextConfig
