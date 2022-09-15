@@ -2,8 +2,11 @@ import { EColor, Size } from '@defines/css'
 import React, { HTMLInputTypeAttribute, InputHTMLAttributes } from 'react'
 import { Button } from '@components/common/button/button';
 import classNames from 'classnames';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 interface Inputprops extends InputHTMLAttributes<HTMLInputElement> {
+    isSearchIcon?: boolean,
     width?: Size,
     height?: Size,
     fontSize?: Size,
@@ -24,26 +27,34 @@ interface Inputprops extends InputHTMLAttributes<HTMLInputElement> {
 
 export function Input(props: Inputprops) {
     const {
-        width = "100%",
+        isSearchIcon,
+        width = "200px",
         height = "60px",
         label,
         placeholder,
         disabled,
         value,
         type,
-        buttonWidth,
-        buttonHeight,
+        buttonWidth = "100px",
+        buttonHeight = "20px",
         buttonFontSize,
         buttonVariant,
         buttonColor,
         buttonDisabled,
-        buttonChildren,
+        buttonChildren = "검색버튼",
         ...rest        
     } = props
     return (
         <>
             <div className={classNames('input-wrapper')}>
                 <label className={classNames('input-box')}>
+                    {
+                        isSearchIcon && 
+                        <FontAwesomeIcon
+                            icon={faMagnifyingGlass}
+                            style={{ width:'10px', height:'10px' }}
+                        />
+                    }
                     <input
                         {...rest}
                         disabled={disabled}
@@ -64,6 +75,12 @@ export function Input(props: Inputprops) {
             {/* 양식 작업하자! */}
             <style jsx>
                 {`
+                    .input-box {
+                        border: 1px solid ${EColor.BLACK};
+                        display: flex;
+                        align-items: center;
+                        background: ${EColor.WHITE}
+                    }
                     .input-wrapper {
                         width: ${width};
                         height: ${height};
@@ -84,7 +101,8 @@ export function Input(props: Inputprops) {
                         height: 100%;
                         outline: none;
                         background: ${EColor.WHITE};
-                        border: 1px solid ${EColor.BLACK};
+                        border: none;
+                        padding: 2px 5px;
                     }
                 `}
             </style>
