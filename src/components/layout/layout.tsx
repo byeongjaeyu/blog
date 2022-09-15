@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
 import { Footer } from './components/footer/footer';
 import { Header } from './components/header/header';
+import { Sidebar } from './components/sidebar/sidebar';
 
 interface Layoutprops {
     children: ReactNode | ReactNode[];
@@ -11,7 +12,7 @@ export function Layout(props: Layoutprops) {
     return (
         <>
             <Header/>
-            <div>옆구리</div>
+            <Sidebar/>
             {children}
             <Footer/>
         </>
