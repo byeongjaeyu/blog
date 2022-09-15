@@ -2,7 +2,7 @@ import { EColor, Size } from '@defines/css'
 import React, { HTMLInputTypeAttribute, InputHTMLAttributes } from 'react'
 import { Button } from '@components/common/button/button';
 import classNames from 'classnames';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Icon } from '../icon/iconForm';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 interface Inputprops extends InputHTMLAttributes<HTMLInputElement> {
@@ -50,9 +50,10 @@ export function Input(props: Inputprops) {
                 <label className={classNames('input-box')}>
                     {
                         isSearchIcon && 
-                        <FontAwesomeIcon
+                        <Icon
                             icon={faMagnifyingGlass}
-                            style={{ width:'10px', height:'10px' }}
+                            width="10px"
+                            height="10px"
                         />
                     }
                     <input

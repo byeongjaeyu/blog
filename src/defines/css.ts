@@ -24,4 +24,10 @@ export enum EColor {
     SUCCESS_DARK = '#1b5e20',
 }
 
-export type Size = number | `${number}px` | `${number}%` | `${number}rem` | `${number}em` | 'fit-content';
+export enum ZIndex {
+    DEFAULT = 0,
+    MODAL = 1,
+    ALERT = 2,
+}
+
+export type Size = number | `${number}px` | `${number}%` | `${number}rem` | `${number}em` | 'fit-content' | 'auto';

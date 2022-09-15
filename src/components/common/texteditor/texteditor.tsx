@@ -26,6 +26,7 @@ export const Editor = (props: TexteditorProps) => {
     return (
         editorLoaded ? 
         <CKEditor
+            // config={[]}
             editor={ClassicEditor}
             data="<p>hi</p>"
             onChange={onChange}
