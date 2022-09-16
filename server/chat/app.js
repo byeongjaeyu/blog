@@ -1,9 +1,17 @@
 // -------------------------------------express서버 선언-------------------------------------
-const httpServer = require("http").createServer();
+const app = express();
+const httpServer = require("http").createServer(app);
 const io = require("socket.io")(httpServer, {
   cors: {
     origin: "http://localhost:8080",
   },
+});
+app.start = app.listen = app.aaa = function() {
+    return server.listen.apply(server, arguments);
+};
+
+app.aaa(app.get('port'), function(){
+    console.log("Server Start...");
 });
 // ------------------------------------socket채팅 이벤트---------------------------------------
 const userList = {};
