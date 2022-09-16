@@ -11,6 +11,11 @@ export interface IChatProps {
     userId: number,
 }
 
+export interface ICurChatProps {
+    curNumberOfPeople: number,
+    curChat: string[],
+}
+
 export function getChatUser(): IChatProps {
     // 로컬이든, 세션이든, 쿠키든에서 user에 관련된 정보를 가져와서 반환해주는 함수
     // 임시로 병재이름, 1234번호 리턴
@@ -29,10 +34,18 @@ export function useChat({userName, userId}: IChatProps) {
         userId: 0,
     })
 
+    const [ chatInfo, setChatInfo ] = useState<ICurChatProps>({
+        curNumberOfPeople: 0,
+        curChat: [""]
+    })
+
     useEffect(() => {
         let newUserInfo = { ...userInfo };
         newUserInfo = {userName, userId};
         setUserInfo(newUserInfo);
+        socket.on('updateUser', function(userList) {
+            console.log(userList);
+        })
         return () => {
             socket.emit('leave', {
                 userName,
@@ -61,6 +74,7 @@ export function useChat({userName, userId}: IChatProps) {
 
     return {
         join,
-        leave
+        leave,
+        chatInfo,
     }
 }

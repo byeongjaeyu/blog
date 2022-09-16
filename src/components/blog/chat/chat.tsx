@@ -1,6 +1,6 @@
 import { EColor, Size } from "@defines/css"
 import { useChat, getChatUser } from "./useChat";
-import { Input } from "@components/common/input/input";
+import { Button } from "@components/common/button/button";
 
 interface ChatCssProps {
     width?: Size,
@@ -16,7 +16,7 @@ export function Chat(props: ChatCssProps) {
     } = props;
 
     // 원래 이 훅은 컴포넌트 말고 페이지에서 써야함!! 테스트용이여서 여기에다가 놓은거.
-    const {join, leave} = useChat(getChatUser());
+    const {join, leave, chatInfo} = useChat(getChatUser());
 
     return (
         <>
@@ -26,24 +26,28 @@ export function Chat(props: ChatCssProps) {
                         채팅방
                     </div>
                     <div className="numberOfPeople">
-                        xx명
+                        {chatInfo.curNumberOfPeople}명
                     </div>
                 </div>
                 <div className="chat-body">
                     <div className="chat-content">
-
+                        {chatInfo.curChat.map((chat) => {
+                            return (
+                                <div key={chat}>{chat}</div>
+                            )
+                        })}
                     </div>
-                    <Input 
-                        onButtonClick={() => {
+                    <Button
+                        onClick={() => {
                             join();
                         }}
-                        buttonChildren={"입장!"}
+                        children={"입장!"}
                     />
-                    <Input 
-                        onButtonClick={() => {
+                    <Button 
+                        onClick={() => {
                             leave();
                         }}
-                        buttonChildren={"퇴장!"}
+                        children={"퇴장!"}
                     />
                 </div>
             </div>
@@ -52,7 +56,14 @@ export function Chat(props: ChatCssProps) {
                     .chat-wrap {
                         width: ${width};
                         height: ${height};
-                        background: ${background};
+                        background: ${EColor.INFO_LIGHT};
+                        text-align: center;
+                        border-radius: 4px;
+                        border: 1px solid ${EColor.BLACK};
+                    }
+                    .chat-content {
+                        height: 120px;
+                        background: ${EColor.INFO_MAIN}
                     }
                 `}
             </style>

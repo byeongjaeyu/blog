@@ -12,7 +12,7 @@ export function Layout(props: Layoutprops) {
     return (
         <>
             <Header/>
-            <Sidebar/>
+            {/* <Sidebar/> */}
             {children}
             <Footer/>
         </>
