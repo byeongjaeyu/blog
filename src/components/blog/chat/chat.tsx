@@ -1,14 +1,15 @@
 import { EColor, Size } from "@defines/css"
 import { useChat, getChatUser } from "./useChat";
 import { Button } from "@components/common/button/button";
+import { Input } from "@components/common/input/input";
 
-interface ChatCssProps {
+interface ChatProps {
     width?: Size,
     height?: Size,
     background?: EColor,
 }
 
-export function Chat(props: ChatCssProps) {
+export function Chat(props: ChatProps) {
     const {
         width = "200px",
         height = "200px",
@@ -16,7 +17,7 @@ export function Chat(props: ChatCssProps) {
     } = props;
 
     // 원래 이 훅은 컴포넌트 말고 페이지에서 써야함!! 테스트용이여서 여기에다가 놓은거.
-    const {join, leave, chatInfo} = useChat(getChatUser());
+    const {join, leave, sendMessage, chatInfo} = useChat(getChatUser());
 
     return (
         <>
@@ -49,6 +50,11 @@ export function Chat(props: ChatCssProps) {
                         }}
                         children={"퇴장!"}
                     />
+                    <Input
+                        buttonWidth="fit-content"
+                        buttonChildren="send"
+                        onButtonClick={sendMessage}
+                    />
                 </div>
             </div>
             <style jsx>
@@ -63,7 +69,8 @@ export function Chat(props: ChatCssProps) {
                     }
                     .chat-content {
                         height: 120px;
-                        background: ${EColor.INFO_MAIN}
+                        background: ${EColor.INFO_MAIN};
+                        overflow-y: scroll;
                     }
                 `}
             </style>

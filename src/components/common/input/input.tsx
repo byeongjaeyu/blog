@@ -4,6 +4,7 @@ import { Button } from '@components/common/button/button';
 import classNames from 'classnames';
 import { Icon } from '../icon/iconForm';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import {useInput} from  './useInput';
 
 interface Inputprops extends InputHTMLAttributes<HTMLInputElement> {
     isSearchIcon?: boolean,
@@ -22,7 +23,7 @@ interface Inputprops extends InputHTMLAttributes<HTMLInputElement> {
     buttonDisabled? : boolean;
     buttonIsArrow? : boolean;
     buttonChildren?: string;
-    onButtonClick?: () => void;
+    onButtonClick?: (value?: string) => void;
 }
 
 
@@ -45,7 +46,9 @@ export function Input(props: Inputprops) {
         buttonChildren = "검색버튼",
         onButtonClick,
         ...rest        
-    } = props
+    } = props;
+
+    const {inputValue, setInputValue}  = useInput();
     return (
         <>
             <div className={classNames('input-wrapper')}>
@@ -63,6 +66,9 @@ export function Input(props: Inputprops) {
                         disabled={disabled}
                         placeholder={placeholder}
                         type={type}
+                        onChange={(e) => {
+                            setInputValue(e.target.value);
+                        }}
                     />
                     <Button
                         width={buttonWidth}
@@ -72,7 +78,7 @@ export function Input(props: Inputprops) {
                         color={buttonColor}
                         disabled={buttonDisabled}
                         children={buttonChildren}    
-                        onClick={onButtonClick}            
+                        onClick={() => onButtonClick?.(inputValue)}     
                     />
                 </label>
             </div>

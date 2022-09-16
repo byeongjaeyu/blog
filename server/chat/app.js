@@ -43,4 +43,19 @@ io.sockets.on('connect', function(socket) {
     socket.on('disconnect', function() {
         console.log(`${(new Date()).toString()} - name: ${userName}(id: ${userId})님이 퇴장하셨습니다.`)
     })
+
+    socket.on('sendMessage', function(param) {
+        const { userName, userId, message } = param;
+        console.log(param);
+        // socket.broadcast.to("room").emit("addMessage", {
+        //     userName,
+        //     userId,
+        //     message
+        // })
+        socket.emit("addMessage", {
+            userName,
+            userId,
+            message
+        })
+    })
 })
