@@ -1,18 +1,16 @@
 // -------------------------------------express서버 선언-------------------------------------
+const express = require('express');
 const app = express();
 const httpServer = require("http").createServer(app);
 const io = require("socket.io")(httpServer, {
   cors: {
-    origin: "http://localhost:8080",
+    origin: "*",
   },
 });
-app.start = app.listen = app.aaa = function() {
-    return server.listen.apply(server, arguments);
-};
-
-app.aaa(app.get('port'), function(){
-    console.log("Server Start...");
-});
+const port = 8080;
+httpServer.listen(port, () => {
+    console.log('server start');
+})
 // ------------------------------------socket채팅 이벤트---------------------------------------
 const userList = {};
 
@@ -33,7 +31,7 @@ io.sockets.on('connect', function(socket) {
         console.log(`${(new Date()).toString()} - name: ${userName}(id: ${userId})님이 입장하셨습니다.`)
     })
 
-    socket.on('disconnect', function(userParam) {
+    socket.on('leave', function(userParam) {
         const { userId, userName } = userParam;
         delete userList[userId];
         socket.leave("room");

@@ -36,6 +36,7 @@ export function useChat({userName, userId}: IChatProps) {
     },[])
 
     const join = () => {
+        console.log('join');
         socket.connect();
         socket.emit('addUser', {
             userName,
@@ -44,11 +45,10 @@ export function useChat({userName, userId}: IChatProps) {
     }
 
     const leave = () => {
-        socket.emit('disconnect', {
+        socket.emit('leave', {
             userName,
             userId
         })
-        socket.disconnect();
     }
 
     // 후 sendchat 이런 메소드들도 추가하기...
