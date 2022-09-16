@@ -39,4 +39,8 @@ io.sockets.on('connect', function(socket) {
         socket.emit('updateUser', userList);
         console.log(`${(new Date()).toString()} - name: ${userName}(id: ${userId})님이 퇴장하셨습니다.`)
     })
+
+    socket.on('disconnect', function() {
+        console.log(`${(new Date()).toString()} - name: ${userName}(id: ${userId})님이 퇴장하셨습니다.`)
+    })
 })

@@ -33,6 +33,12 @@ export function useChat({userName, userId}: IChatProps) {
         let newUserInfo = { ...userInfo };
         newUserInfo = {userName, userId};
         setUserInfo(newUserInfo);
+        return () => {
+            socket.emit('leave', {
+                userName,
+                userId
+            })
+        }
     },[])
 
     const join = () => {
