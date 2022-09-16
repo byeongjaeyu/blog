@@ -1,7 +1,9 @@
+import {Chat} from '@components/blog/chat/chat'
+
 function Main() {
     return (
         <>
-            xx
+            <Chat/>
         </>
     )
 }

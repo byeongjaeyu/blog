@@ -22,6 +22,7 @@ interface Inputprops extends InputHTMLAttributes<HTMLInputElement> {
     buttonDisabled? : boolean;
     buttonIsArrow? : boolean;
     buttonChildren?: string;
+    onButtonClick?: () => void;
 }
 
 
@@ -42,6 +43,7 @@ export function Input(props: Inputprops) {
         buttonColor,
         buttonDisabled,
         buttonChildren = "검색버튼",
+        onButtonClick,
         ...rest        
     } = props
     return (
@@ -69,7 +71,8 @@ export function Input(props: Inputprops) {
                         variant={buttonVariant}
                         color={buttonColor}
                         disabled={buttonDisabled}
-                        children={buttonChildren}                
+                        children={buttonChildren}    
+                        onClick={onButtonClick}            
                     />
                 </label>
             </div>

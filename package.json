@@ -37,10 +37,12 @@
     "classnames": "^2.3.1",
     "next": "12.2.5",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "socket.io-client": "^4.5.2"
   },
   "devDependencies": {
     "@babel/core": "^7.19.0",
+    "@openapitools/openapi-generator-cli": "^2.5.2",
     "@storybook/addon-actions": "^6.5.10",
     "@storybook/addon-essentials": "^6.5.10",
     "@storybook/addon-interactions": "^6.5.10",
@@ -56,8 +58,8 @@
     "eslint": "8.23.0",
     "eslint-config-next": "12.2.5",
     "react-docgen-typescript-loader": "^3.7.2",
+    "tsconfig-paths-webpack-plugin": "^4.0.0",
     "typescript": "4.8.2",
-    "typescript-transform-paths": "^3.3.1",
-    "tsconfig-paths-webpack-plugin": "^4.0.0"
+    "typescript-transform-paths": "^3.3.1"
   }
 }
