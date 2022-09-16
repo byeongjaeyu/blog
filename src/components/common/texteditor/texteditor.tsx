@@ -16,6 +16,33 @@ export const Editor = (props: TexteditorProps) => {
         onBlur,
         onFocus,
     } = props
+    const editorConfig = {
+        toolbar: {
+            items: [
+                "heading",
+                "|",
+                "bold",
+                "italic",
+                "link",
+                "bulletedList",
+                "numberedList",
+                "|",
+                "outdent",
+                "indent",
+                "|",
+                "imageUpload",
+                "blockQuote",
+                "mediaEmbed",
+                "undo",
+                "redo",
+                "insertTable",
+            ]
+        },
+        ckfinder: {
+            uploadUrl: '/image',
+            options: { resourceType: "Images" }
+        }
+    }
     useEffect(()=>{
         editorRef.current = {
             CKEditor: require("@ckeditor/ckeditor5-react").CKEditor,

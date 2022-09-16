@@ -1,9 +1,12 @@
 import { EColor, ZIndex, Size } from "@defines/css"
 import { Icon } from '@components/common/icon/iconForm';
+import { faClose } from "@fortawesome/free-solid-svg-icons";
+import { ReactNode } from 'react'
 
 interface ModalProps {
   title: string,
-  description: string,
+  description?: string,
+  children?: ReactNode | ReactNode[],
   background?: EColor,
   titleFontSize?: Size,
   descriptionFontSize?: Size,
@@ -12,7 +15,8 @@ interface ModalProps {
 export function Modal(props: ModalProps) {
   const {
     title,
-    description,
+    children = "",
+    description = "",
     background = EColor.WHITE,
     titleFontSize = "32px",
     descriptionFontSize = "16px"
@@ -23,13 +27,15 @@ export function Modal(props: ModalProps) {
         <div className="modal-head">
           <span>{title}</span>
           <Icon
-            icon={"close"}
+            icon={faClose}
             width="40px"
             height="auto"
           />
         </div>
         <div className="modal-body">
           <span>{description}</span>
+          { (description && children) && <hr className="modal-body-divider"/> }
+          {children}
         </div>
       </div>
       <style jsx>
@@ -59,6 +65,11 @@ export function Modal(props: ModalProps) {
 
           .modal-body span {
             font-size: ${descriptionFontSize};
+          }
+
+          .modal-body-divider {
+            margin-top: 60px;
+            margin-bottom: 60px;
           }
         `}
       </style>

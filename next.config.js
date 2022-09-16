@@ -14,6 +14,10 @@ const nextConfig = {
   async rewrites() {
     return []
   },
+  env: {
+    testkey1: 'testvalue1',
+    testkey2: 'testvalue2',
+  }
 }
 
 module.exports = nextConfig
